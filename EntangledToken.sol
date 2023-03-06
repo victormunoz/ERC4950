@@ -40,7 +40,7 @@ contract EntangledToken is ERC721 {
         _;
     }
 
-    function baseURI() public view returns (string memory) {
+    function baseURI() public virtual view returns (string memory) {
         return baseUri;
     }
 
@@ -48,13 +48,13 @@ contract EntangledToken is ERC721 {
         baseUri = base_uri;
     }
 
-    function tokenURI(uint256 tokenId) public view  override returns (string memory) {
+    function tokenURI(uint256 tokenId) public virtual view  override returns (string memory) {
         return baseUri;
     }
     /**
      * Transfers ERC20 tokens from the contract to a recipient.
      */
-    function transferTokens(IERC20 token, address recipient, uint256 amount) public onlyOwners {
+    function transferTokens(IERC20 token, address recipient, uint256 amount) public virtual onlyOwners {
         token.transfer(recipient, amount);
     }
 
